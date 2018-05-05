@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %} [ Astral ] = Wall Map {% endblock %}
+
+{% block css %}
+<style type="text/css">
+	body, html {
+		background-color: #9EAAAD
+	}
+
+	#gmap, #mstream_container, .mstream_row > .col-lg-12 { 
+		height: 100%; 
+	}
+
+	#mstream {
+		height: 98%;
+		overflow: auto;
+		margin-top: 10px;
+	}
+
+	.row, .mstream_container {
+		height: 100%;
+	}
+
+	.mheader {
+		padding-bottom: 19px;
+		padding-top: 15px;
+		font-size: 12pt;
+		padding-left: 41px;
+		background-color: #111;
+		color: #fff;
+	}
+
+	.mcontent {
+		width: 100%;
+		padding-top: 19px;
+		padding-bottom: 22px;
+		padding-left:41px;
+		word-wrap: break-word;
+		font-size: 14pt;
+		background-color: #E8CEA0;
+	}
+
+	.mloc {
+		padding-top: 11px;
+    	padding-bottom: 11px;
+    	padding-left: 21px;
+    	background-color: #92A98F;
+    	font-size: 9pt;
+	}
+
+	#mstream > div {
+		width: 96%;
+		box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+
+	@media (max-width: 767px) { 
+		#gmap { height: 37%; }
+		#mstream { height: 100%; }
+		#mcontent { height: 30px; }
+		.msg_row { height: 50%; }
+		.mstream_row { height: 50%; }
+		#mcontent { resize: none; }
+		.mstream_container { height: 61%;}
+		#mstream > div { width: 94% };
+	}
+</style>
+{% endblock %}
+{% block js %}
+{% load static %}
+<script type="text/javascript" src='{% static 'js/csrf.js' %}'></script>
+<script type="text/javascript" src='{% static 'js/msgs/watch-wall.js' %}'></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA688RPX9jvR0fURyV_aQmGEk2YiG1kg0E&callback=buildMap" async defer></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" style="height: 100%">
+	<div class="row">
+		<div class="col-sm-7 col-lg-7" id="gmap"></div>
+		<div class="col-sm-5 col-lg-5 mstream_container"><div id="mstream"></div></div>
+	</div>
+</div>
+
+{% endblock %}

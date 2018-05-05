@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} [ Astral ] = Login {% endblock %}
+
+{% block css %}
+<style type="text/css">
+body {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background: url(https://b.fastcompany.net/multisite_files/fastcompany/imagecache/1280/poster/2015/07/3049187-poster-p-1-10-charming-8-bit-gifs-depicting-every-day-life-in-japan.gif) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.form-signin {
+	max-width: 330px;
+	padding: 14% 15px 15px 15px;
+	margin: 0 auto;
+}
+
+.form-signin .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	 -moz-box-sizing: border-box;
+	      box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+.form-signin input {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+</style>
+{% endblock %}
+
+{% block js %}
+	{% if ferror %}
+		<script type="text/javascript">
+			bootbox.alert("{{ ferror }}");
+		</script>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<form class="form-signin" action="/" method="post"> {% csrf_token %}
+		<label for="inputUsername" class="sr-only">Username</label>
+		<input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Enter</button>
+	</form>
+</div> <!-- /container -->
+{% endblock %}
