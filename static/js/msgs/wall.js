@@ -49,7 +49,7 @@ function buildMap(position)
 }
 
 function google_gupdate(){
-	$.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA688RPX9jvR0fURyV_aQmGEk2YiG1kg0E", function(success) {
+	$.post("https://www.googleapis.com/geolocation/v1/geolocate?key=", function(success) {
 		var lat = success.location.lat; 
 		var lng = success.location.lng;
 		var latlng = new google.maps.LatLng(lat,lng);
@@ -168,7 +168,7 @@ function attachMapMeth(){
 }
 
 function google_geoloc(){
-	$.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA688RPX9jvR0fURyV_aQmGEk2YiG1kg0E", function(success) {
+	$.post("https://www.googleapis.com/geolocation/v1/geolocate?key=", function(success) {
 		buildMap({coords: {latitude: success.location.lat, longitude: success.location.lng}});
 	}).fail(function(err){
 		buildMap({coords: {latitude: 0.0, longitude: 0.0}});
